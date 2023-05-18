@@ -1,30 +1,30 @@
 name: Build Apache HTTP Server for s390x
 
 on:
-push:
-branches:
-- trunk
+  push:
+    branches:
+      - trunk
 
 jobs:
-build:
-runs-on: ubuntu-latest
+  build:
+      runs-on: ubuntu-latest
 
-strategy:
-matrix:
-os: [ubuntu-20.04]
-arch: [s390x]
+      strategy:
+        matrix:
+          os: [ubuntu-20.04]
+          arch: [s390x]
 
-steps:
-- name: Checkout code
-uses: actions/checkout@v2
+      steps:
+        - name: Checkout code
+          uses: actions/checkout@v2
 
-- name: Set up build environment
-run: sudo apt-get update && sudo apt-get install -y git python openssl gcc autoconf make libtool-bin libpcre3-dev libxml2  libexpat1 libexpat1-dev wget tar
+        - name: Set up build environment
+          run: sudo apt-get update && sudo apt-get install -y git python openssl gcc autoconf make libtool-bin libpcre3-dev libxml2  libexpat1 libexpat1-dev wget tar
 
-- name: Build Apache HTTP Server
-run: |
-git clone https://github.com/apache/httpd.git
-cd httpd
-./buildconf
-./configure --with-mpm=prefork
-make
+        - name: Build Apache HTTP Server
+          run: |
+            git clone https://github.com/apache/httpd.git
+            cd httpd
+            ./buildconf
+            ./configure --with-mpm=prefork
+            make
