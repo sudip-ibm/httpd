@@ -25,9 +25,4 @@ jobs:
           sudo apt-get install -y crossbuild-essential-s390x
 
       - name: Build Apache HTTP Server
-        run: |
-          git clone https://github.com/apache/httpd.git
-          cd httpd
-          ./buildconf
-          CC="s390x-linux-gnu-gcc" ./configure --host=s390x-linux-gnu --with-mpm=prefork
-          make
+        run: ./test/travis_run_linux.sh
