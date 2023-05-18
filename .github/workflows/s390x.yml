@@ -8,7 +8,7 @@ on:
 
 jobs:
   build:
-      runs-on: ubuntu-latest
+      runs-on: ubuntu-20.04
 
       strategy:
         matrix:
@@ -16,21 +16,21 @@ jobs:
           arch: [s390x]
 
       steps:
-        - name: Set up Node.js
-          uses: actions/setup-node@v2
-          with:
-            node-version: 16
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: 16
             
-        - name: Checkout code
-          uses: actions/checkout@v2
+      - name: Checkout code
+        uses: actions/checkout@v2
 
-        - name: Set up build environment
-          run: sudo apt-get update && sudo apt-get install -y git python openssl gcc autoconf make libtool-bin libpcre3-dev libxml2  libexpat1 libexpat1-dev wget tar
+      - name: Set up build environment
+        run: sudo apt-get update && sudo apt-get install -y git python openssl gcc autoconf make libtool-bin libpcre3-dev libxml2  libexpat1 libexpat1-dev wget tar
 
-        - name: Build Apache HTTP Server
-          run: |
-            git clone https://github.com/apache/httpd.git
-            cd httpd
-            ./buildconf
-            ./configure --with-mpm=prefork
-            make
+      - name: Build Apache HTTP Server
+        run: |
+          git clone https://github.com/apache/httpd.git
+          cd httpd
+          ./buildconf
+          ./configure --with-mpm=prefork
+          make
