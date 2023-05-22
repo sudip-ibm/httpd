@@ -258,8 +258,8 @@ jobs:
           - name: s390x Configuration
             config: --enable-mods-shared=reallyall --host=s390x-linux-gnu
             env: |
-              APR_VERSION=1.7.4
-              APU_VERSION=1.7.x
+              APR_VERSION=1.7.0
+              APU_VERSION=1.6.3
               APU_CONFIG="--with-crypto --with-ldap"
               TARGET_ARCH=s390x
               
