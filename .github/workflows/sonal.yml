@@ -1,22 +1,6 @@
 name: Sonal
 
 on:
-  push:
-    branches: [ "*" ]
-    paths-ignore:
-      - 'docs/**'
-      - STATUS
-      - CHANGES
-      - changes-entries/*
-    tags:
-      - 2.*
-  pull_request:
-    branches: [ "trunk", "2.4.x" ]
-    paths-ignore:
-      - 'docs/**'
-      - STATUS
-      - CHANGES
-      - changes-entries/*   
   workflow_dispatch:
 
 env:
