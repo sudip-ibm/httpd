@@ -263,7 +263,7 @@ jobs:
               APU_CONFIG="--with-crypto --with-ldap"
               TARGET_ARCH=s390x
               
-    runs-on: ubuntu-20.04-s390x
+    runs-on: ubuntu-20.04
     timeout-minutes: 30
     env:
       NOTEST_CFLAGS: ${{ matrix.notest-cflags }}
@@ -288,7 +288,7 @@ jobs:
         cache-name: cache-apru
       with:
         path: ~/root
-        key: ${{ runner.os }}-s390x-build-${{ env.cache-name }}-${{ hashFiles('/home/runner/root/.key-*') }}
+        key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('/home/runner/root/.key-*') }}
     - name: Cache CPAN modules
       uses: actions/cache@v3
       env:
