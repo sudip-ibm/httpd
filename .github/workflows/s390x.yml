@@ -1,9 +1,9 @@
 name: Build Apache HTTP Server for s390x
 
 on:
-  push:
-    branches:
-      - trunk
+#   push:
+#     branches:
+#       - trunk
   workflow_dispatch:
 
 jobs:
